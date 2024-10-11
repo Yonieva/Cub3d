@@ -1,0 +1,28 @@
+## Nom du projet : Castlevania 42
+
+## Version : 1.0
+
+## Auteur : Gauthier Esteve et Yoan Onieva
+
+---
+
+### Conditions de la licence
+
+Ce projet est un fan game basé sur l'univers de Castlevania. Il est conçu uniquement à des fins non commerciales et éducatives. Les droits d'auteur et les marques déposées de Castlevania appartiennent à "Konami". 
+
+Ce jeu utilise des textures créées par "Zdoom Texture Thread, osjclatchford, Enjay, empessah, GothicDM Team" et des sprites crées par "Khefz" 
+dans le fan game "Castlevania Simon Destiny" crée par Andrea Gori. Les crédits sont donnés en reconnaissance de leur travail.
+
+En utilisant ce projet, vous acceptez les conditions suivantes :
+
+1. **Utilisation non commerciale** :
+   - Ce fan game est destiné à un usage scolaire et ne doit pas être vendu ou distribué à des fins commerciales.
+
+2. **Modifications** :
+   - Vous êtes libre de modifier le code source de ce projet pour votre usage personnel. Cependant, toute distribution de versions modifiées doit respecter les mêmes conditions énoncées dans cette licence.
+
+3. **Pas de responsabilité** :
+   - L'auteur du projet ne peut être tenu responsable des dommages ou problèmes découlant de l'utilisation de ce fan game. L'utilisation se fait à vos propres risques.
+
+4. **Respect des droits d'auteur** :
+   - Veuillez respecter les droits d'auteur de l'œuvre originale de Castlevania et des textures utilisées. Ce fan game ne doit pas inclure de contenu protégé sans autorisation explicite.
