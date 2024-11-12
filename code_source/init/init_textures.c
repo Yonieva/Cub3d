@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2023/02/11 11:39:38 by mcombeau         ###   ########.fr       */
+/*   Updated: 2024/11/12 22:16:20 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/*on copie les images et on destroy direct comme ca c est deja liberer*/
 
 static int	*xpm_to_img(t_data *data, char *path)
 {
@@ -19,12 +21,15 @@ static int	*xpm_to_img(t_data *data, char *path)
 	int		x;
 	int		y;
 
+	/*Chargement de la texture stockée dans tmp temporairement.*/
 	init_texture_img(data, &tmp, path);
+	/*tableau qui contiendra tous les pixels de la texture*/
 	buffer = ft_calloc(1,
 			sizeof * buffer * data->texinfo.size * data->texinfo.size);
 	if (!buffer)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	y = 0;
+	/*Copie des pixels de tmp a buffer*/
 	while (y < data->texinfo.size)
 	{
 		x = 0;
@@ -42,6 +47,7 @@ static int	*xpm_to_img(t_data *data, char *path)
 
 void	init_textures(t_data *data)
 {
+	/*un tableau qui va stocker les textures pour chaque direction*/
 	data->textures = ft_calloc(5, sizeof * data->textures);
 	if (!data->textures)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));

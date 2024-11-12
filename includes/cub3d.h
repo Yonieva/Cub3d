@@ -45,6 +45,10 @@ typedef unsigned long	t_ulong;
 #  define O_DIRECTORY 00200000
 # endif
 
+# ifndef BONUS
+#  define BONUS 0
+# endif
+
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
 

@@ -6,12 +6,13 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:35:50 by yonieva           #+#    #+#             */
-/*   Updated: 2024/11/07 16:05:50 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/11/12 22:44:46 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*vérifie si le chemin donné en arg ne correspond pas a un fichier*/
 static bool	is_dir(char *arg)
 {
 	int		fd;
@@ -27,6 +28,7 @@ static bool	is_dir(char *arg)
 	return (ret);
 }
 
+/*vérifie si le fichier spécifié est un fichier .cub*/
 static bool	is_cub_file(char *arg)
 {
 	size_t	len;
@@ -39,6 +41,7 @@ static bool	is_cub_file(char *arg)
 	return (true);
 }
 
+/*vérifie si le fichier spécifié est un fichier .xpm*/
 static bool	is_xpm_file(char *arg)
 {
 	size_t	len;
@@ -51,6 +54,7 @@ static bool	is_xpm_file(char *arg)
 	return (true);
 }
 
+/*vérifie si fichier cub pour la map, sinon xpm pour texture sinon err*/
 int	check_file(char *arg, bool cub)
 {
 	int	fd;
@@ -63,7 +67,7 @@ int	check_file(char *arg, bool cub)
 	close(fd);
 	if (cub && !is_cub_file(arg))
 		return (err_msg(arg, ERR_FILE_NOT_CUB, FAILURE));
-	/*si le fichier n est pas un cub alors c est un xpm*/
+	/*si le fichier n est ni un cub, ni un xpm -> erreur*/
 	if (!cub && !is_xpm_file(arg))
 		return (err_msg(arg, ERR_FILE_NOT_XPM, FAILURE));
 	return (SUCCESS);
