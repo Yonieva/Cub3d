@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/13 16:07:19 by yonieva           #+#    #+#             */
-/*   Updated: 2024/10/13 16:07:19 by yonieva          ###   ########.fr       */
+/*   Created: 2024/11/14 22:10:13 by yonieva           #+#    #+#             */
+/*   Updated: 2024/11/14 22:10:13 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube3d.h"
 
-
-int	main(int ac, char **av)
+void	clean_exit(t_data *data, int code)
 {
-	t_data	data;
+	if(!data)
+		exit(code);
+	if(data->win && data->mlx)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx);
+	{
+		mlx_destroy_display(data->mlx);
+		mlx_loop_end(data->mlx);
+		free(data->mlx);
+	}
+	free_data(data);
+	exit(code);
+}
 
-	if (ac != 2)
-		return (printf("error nb args: './cub3d maps/castle.cub'"));
-	init_data(&data);
-	if (parse_args(&data, av) != 0)
-		return (1);
-	init_mlx(&data);
-	init_textures(&data);
-	print_controls();
-	render_images(&data);
-	listen_for_input(&data);
-	mlx_loop_hook(data.mlx, render, &data);
-	mlx_loop(data.mlx);
-	return (0);
+int	quit(t_data *data)
+{
+	clean_exit(data, 0);
+	return(0);
 }

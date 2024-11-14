@@ -208,7 +208,8 @@ typedef struct s_data
 }	t_data;
 /*********************************************************************/
 /********************************FONCTIONS****************************/
-//*********************************main
+/*********************************************************************/
+//*********************************intro
 void	print_controls(void);
 //*********************************init
 void	init_data(t_data *data);
@@ -222,3 +223,9 @@ void	init_textures(t_data *data);
 //*********************************parsing
 int		parse_args(t_data *data, char **av);
 int		check_file(char *arg, bool cub);
+//*********************************exit/free
+int		quit(t_data *data);
+void	clean_exit(t_data *data, int code);
+void	free_tab(void **tab);
+int		free_data(t_data *data);
+
