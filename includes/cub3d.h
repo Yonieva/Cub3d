@@ -223,6 +223,7 @@ void	init_textures(t_data *data);
 //*********************************parsing
 int		parse_args(t_data *data, char **av);
 int		check_file(char *arg, bool cub);
+void	parse_data(char *path, t_data *data);
 //*********************************exit/free
 int		quit(t_data *data);
 void	clean_exit(t_data *data, int code);

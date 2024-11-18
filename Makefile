@@ -25,7 +25,9 @@ SRC		= 	main.c \
 			init/init_mlx.c \
 			init/init_textures.c \
 			parsing/check_args.c \
+			parsing/parse_data.c \
 			exit/exit.c \
+			exit/free.c \
 
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 

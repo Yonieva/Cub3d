@@ -15,7 +15,7 @@
 /*initialise une nouvelle image avec une largeur et une hauteur*/
 void	init_img(t_data *data, t_img *image, int width, int height)
 {
-	/*Nettoie les données de l'image*/
+	/*Nettoie les données de l'image precedente*/
 	init_img_clean(image);
 	image->img = mlx_new_image(data->mlx, width, height);
 	if (image->img == NULL)
@@ -49,6 +49,7 @@ void	init_mlx(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Castlevania 3d");
 	if (!data->win)
 		clean_exit(data, err_msg("mlx", ERR_MLX_WIN, 1));
+	/*Position curseur souris, au centre de notre fenetre*/ 
 	if (BONUS)
 		mlx_mouse_move(data->mlx, data->win, data->win_width / 2,
 			data->win_height / 2);
