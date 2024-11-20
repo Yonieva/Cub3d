@@ -26,6 +26,9 @@ SRC		= 	main.c \
 			init/init_textures.c \
 			parsing/check_args.c \
 			parsing/parse_data.c \
+			parsing/get_file_data.c \
+			parsing/check_map.c \
+			parsing/check_map_utils.c \
 			exit/exit.c \
 			exit/free.c \
 

@@ -62,7 +62,7 @@ static void	fill_tab(int row, int column, int i, t_data *data)
 	data->mapinfo.file[row] = NULL;
 }
 
-/*Analyse le fichier cub et le stocke dans la structure data*/
+/*Analyse et copie fichier cub dans la structure data*/
 void	parse_data(char *path, t_data *data)
 {
 	int		row;

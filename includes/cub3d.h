@@ -224,6 +224,9 @@ void	init_textures(t_data *data);
 int		parse_args(t_data *data, char **av);
 int		check_file(char *arg, bool cub);
 void	parse_data(char *path, t_data *data);
+int		get_file_data(t_data *data, char **map);
+int		check_map_validity(t_data *data, char **map_tab);
+int		check_map_sides(t_mapinfo *map, char **map_tab)
 //*********************************exit/free
 int		quit(t_data *data);
 void	clean_exit(t_data *data, int code);
