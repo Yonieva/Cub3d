@@ -209,7 +209,6 @@ typedef struct s_data
 /*********************************************************************/
 /********************************FONCTIONS****************************/
 /*********************************************************************/
-//*********************************intro
 void	print_controls(void);
 //*********************************init
 void	init_data(t_data *data);
@@ -226,10 +225,19 @@ int		check_file(char *arg, bool cub);
 void	parse_data(char *path, t_data *data);
 int		get_file_data(t_data *data, char **map);
 int		check_map_validity(t_data *data, char **map_tab);
-int		check_map_sides(t_mapinfo *map, char **map_tab)
+int		check_map_sides(t_mapinfo *map, char **map_tab);
+int		check_textures_validity(t_data *data, t_texinfo *textures);
+int		fill_color(t_data *data, t_texinfo *textures, char *line, int j);
+int		is_a_white_space(char c);
+size_t	find_biggest_len(t_mapinfo *map, int i);
+//*********************************movement
+void	init_player_direction(t_data *data);
 //*********************************exit/free
 int		quit(t_data *data);
 void	clean_exit(t_data *data, int code);
 void	free_tab(void **tab);
 int		free_data(t_data *data);
+int		err_msg_val(int detail, char *str, int code);
+int		err_msg(char *detail, char *str, int code);
 
+#endif

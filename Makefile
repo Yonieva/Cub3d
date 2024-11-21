@@ -29,6 +29,10 @@ SRC		= 	main.c \
 			parsing/get_file_data.c \
 			parsing/check_map.c \
 			parsing/check_map_utils.c \
+			parsing/check_textures.c \
+			parsing/fill_color.c \
+			parsing/utils.c \
+			movement/player_dir.c \
 			exit/exit.c \
 			exit/free.c \
 

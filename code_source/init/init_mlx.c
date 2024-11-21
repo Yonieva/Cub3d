@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 /*initialise une nouvelle image avec une largeur et une hauteur*/
 void	init_img(t_data *data, t_img *image, int width, int height)

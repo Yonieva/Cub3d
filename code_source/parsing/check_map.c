@@ -60,7 +60,7 @@ static int	check_position_is_valid(t_data *data, char **map_tab)
 	return (SUCCESS);
 }
 
-/*stock position exacte du j + le met au centre de la case + met a 0 (vide)*/
+/*stock position exacte du p1 + le met au centre de la case + met a 0 (vide)*/
 static int	check_player_position(t_data *data, char **map_tab)
 {
 	int	i;

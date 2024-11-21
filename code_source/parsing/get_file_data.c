@@ -85,7 +85,7 @@ static int	ignore_whitespaces_get_info(t_data *data, char **map, int i, int j)
 		/*sinon on est sur F(floor) ou C(ceiling)*/
 		else
 		{
-			if (fill_color_textures(data, &data->texinfo, map[i], j) == ERR)
+			if (fill_color(data, &data->texinfo, map[i], j) == ERR)
 				return (FAILURE);
 			return (BREAK);
 		}	
