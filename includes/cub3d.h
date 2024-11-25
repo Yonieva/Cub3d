@@ -46,7 +46,7 @@ typedef unsigned long	t_ulong;
 # endif
 
 # ifndef BONUS
-#  define BONUS 0
+#  define BONUS 1
 # endif
 
 # define MOVESPEED 0.0125
@@ -228,12 +228,26 @@ int		check_map_validity(t_data *data, char **map_tab);
 int		check_map_sides(t_mapinfo *map, char **map_tab);
 int		check_textures_validity(t_data *data, t_texinfo *textures);
 int		fill_color(t_data *data, t_texinfo *textures, char *line, int j);
+int		create_map(t_data *data, char **file, int i);
 int		is_a_white_space(char c);
 size_t	find_biggest_len(t_mapinfo *map, int i);
 //*********************************movement
 void	init_player_direction(t_data *data);
+void	listen_for_input(t_data *data);
+int		move_player(t_data *data);
+int		validate_move(t_data *data, double new_x, double new_y);
+int		rotate_player(t_data *data, double rotdir);
+//*********************************render
+void	render_images(t_data *data);
+int		render(t_data *data);
+void	set_image_pixel(t_img *image, int x, int y, int color);
+void	init_texture_pixels(t_data *data);
+void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x);
+int		raycasting(t_player *player, t_data *data);
+void	render_minimap(t_data *data);
+void	render_minimap_image(t_data *data, t_minimap *minimap);
 //*********************************exit/free
-int		quit(t_data *data);
+int		quit_cub3d(t_data *data);
 void	clean_exit(t_data *data, int code);
 void	free_tab(void **tab);
 int		free_data(t_data *data);

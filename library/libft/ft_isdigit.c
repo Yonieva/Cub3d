@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:19:42 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/02 23:37:22 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/11/25 18:25:05 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 int	ft_isdigit(int c)
 {
-	return ((c >= '0' && c <= '9'));
+	if (c > 47 && c < 58)
+		return (1);
+	else
+		return (0);
 }

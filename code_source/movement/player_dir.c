@@ -17,7 +17,7 @@
 dir_x = -1 et dir_y = 0 :
 Cela signifie que le joueur regarde directement à gauche (axe négatif X).
 plane_x = 0 et plane_y = -0.66 :
-Le plan caméra est orienté perpendiculairement à la direction, vers le bas (axe négatif Y).
+La caméra est orienté perpendiculairement à la dir, vers le bas (axe négatif Y)
 La valeur 0.66 contrôle l'ouverture du champ de vision (FOV).*/
 
 static void	init_player_north_south(t_player *player)

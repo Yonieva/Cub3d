@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	if (ac != 2)
-		return (printf("error nb args: './cub3d maps/castle.cub'"));
+		return (printf(RED "\terror nb args: ./cub3d maps/xx.cub \n"RESET));
 	init_data(&data);
 	if (parse_args(&data, av) != 0)
 		return (1);

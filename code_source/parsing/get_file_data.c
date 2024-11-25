@@ -19,24 +19,20 @@ static char	*get_texture_path(char *line, int j)
 	int		i;
 	char	*path;
 
-	/*Ignore espaces tab*/
 	while (line[j] && (line[j] == ' ' || line[j] == '\t'))
 		j++;
 	len = j;
-	/*Calcule la longueur du chemin*/
 	while (line[len] && (line[len] != ' ' && line[len] != '\t'))
 		len++;
 	path = malloc(sizeof(char) * (len - j + 1));
 	if (!path)
 		return (NULL);
 	i = 0;
-	/*Copie le chemin dans path*/
 	while (line[j] && (line[j] != ' ' && line[j] != '\t' && line[j] != '\n'))
 		path[i++] = line[j++];
 	path[i] = '\0';
 	while (line[j] && (line[j] == ' ' || line[j] == '\t'))
 		j++;
-	/*Si autre caractere present, path = NULL*/
 	if (line[j] && line[j] != '\n')
 	{
 		free(path);

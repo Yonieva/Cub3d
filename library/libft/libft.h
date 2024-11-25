@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:58:11 by yonieva           #+#    #+#             */
-/*   Updated: 2024/02/17 15:48:20 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/11/25 18:52:31 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ int		ft_printf(const char *format, ...);
 /*----------------------------------------------------------------------------*/
 /*-----------------------------GET NEXT LINE---------------------------------*/
 char	*get_next_line(int fd);
-char	*linereader(char *str, int fd);
-char	*linecpy(char *str);
-char	*savenfree(char *str);
-char	*ft_strgnl(char *s, int c);
-char	*ft_strjoingnl(char *s1, char *s2);
+char	*ft_line_results(int ret, char *stock, char *buffer);
+void	ft_get_the_spare(char *buffer);
+char	*ft_get_the_line(char *stock);
+int     ft_malloc_count(char *stock);
+char	*f_strjoin(char *s1, char *s2);
+char	*f_strdup(char *s1);
+char	*f_strchr(char *s, int c);
 /*---------------------------------------------------------------------------*/
 /*----------------TRAITEMENT CARACTERES ET CHAINE DE CARACTERES---------------*/
 size_t	ft_strlen(const char *str);/*Retourne nb char d une string*/

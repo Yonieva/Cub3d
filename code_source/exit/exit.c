@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	clean_exit(t_data *data, int code)
 {
@@ -18,7 +18,7 @@ void	clean_exit(t_data *data, int code)
 		exit(code);
 	if(data->win && data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx);
+	if (data->mlx)
 	{
 		mlx_destroy_display(data->mlx);
 		mlx_loop_end(data->mlx);
@@ -28,7 +28,7 @@ void	clean_exit(t_data *data, int code)
 	exit(code);
 }
 
-int	quit(t_data *data)
+int	quit_cub3d(t_data *data)
 {
 	clean_exit(data, 0);
 	return(0);

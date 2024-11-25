@@ -10,114 +10,98 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-// lire le fichier
 
-char	*linereader(char *str, int fd)
+int	ft_malloc_count(char *stock)
 {
-	char	*reader;
-	int		nbytrd;
+	int	i;
 
-	reader = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!reader)
-		return (0);
-	nbytrd = 1;
-	while (nbytrd != 0 && !ft_strgnl(str, '\n'))
-	{
-		nbytrd = read(fd, reader, BUFFER_SIZE);
-		if (nbytrd == -1)
-		{
-			free(reader);
-			return (0);
-		}
-		reader[nbytrd] = '\0';
-		str = ft_strjoingnl(str, reader);
-	}
-	free(reader);
-	return (str);
+	i = 0;
+	if (f_strchr(stock, '\n') == NULL)
+		return (ft_strlen(stock));
+	while (stock[i] != '\n' && stock[i] != '\0')
+		i++;
+	return (i + 1);
 }
 
-// +2 pour le carac nul + le \n
-
-char	*linecpy(char *str)
+char	*ft_get_the_line(char *stock)
 {
+	char	*line;
 	int		i;
-	char	*s;
+	int		len;
 
+	line = NULL;
+	len = ft_malloc_count(stock);
+	line = malloc(sizeof(char) * (len + 1));
+	if (!line)
+		return (NULL);
 	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] && str[i] != '\n')
-		i++;
-	s = malloc(sizeof(char) * (i + 2));
-	if (!s)
-		return (0);
-	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (stock[i] && i < len)
 	{
-		s[i] = str[i];
+		line[i] = stock[i];
 		i++;
 	}
-	if (str[i] == '\n')
-	{
-		s[i] = str[i];
-		i++;
-	}
-	s[i] = '\0';
-	return (s);
+	line[i] = '\0';
+	return (line);
 }
 
-//malloc en enlevant bien le str deja renvoye pour ne garder que ce qu'il reste
-
-char	*savenfree(char *str)
+void	ft_get_the_spare(char *buffer)
 {
-	int		i;
-	int		j;
-	char	*save;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (buffer[i] != '\n')
 		i++;
-	if (!str[i])
-	{
-		free(str);
-		return (0);
-	}
-	save = malloc(sizeof(char) * (ft_strlen(str) - i + 1));
-	if (!save)
-		return (0);
-	i++;
+	i = i + 1;
 	j = 0;
-	while (str[i])
+	while (i < BUFFER_SIZE)
 	{
-		save[j++] = str[i++];
+		buffer[j] = buffer[i];
+		i++;
+		j++;
 	}
-	save[j] = '\0';
-	free(str);
-	return (save);
+	buffer[j] = '\0';
 }
 
-/* 1.check que le fichier est bien lisible, et nb d'octets lu n'est pas nul
-   2. stocker la ligne lue, join les lignes entre elle 
-   3. malloc it 
-   4. free la memoire deja renvoyee pour ne garder que les lignes suivantes */
+char	*ft_line_results(int ret, char *stock, char *buffer)
+{
+	char		*line;
+
+	line = NULL;
+	if (ft_strlen(stock) == 0)
+	{
+		free(stock);
+		return (NULL);
+	}
+	line = ft_get_the_line(stock);
+	if (ret > 0)
+		ft_get_the_spare(buffer);
+	free(stock);
+	return (line);
+}
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*str;
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*stock;
+	int			ret;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
-		return (0);
-	str = linereader(str, fd);
-	if (!str)
-		return (0);
-	line = linecpy(str);
-	str = savenfree(str);
-	if (line[0] == '\0')
+	stock = NULL;
+	if ((read(fd, buffer, 0) == -1) || BUFFER_SIZE <= 0)
+		return (NULL);
+	ret = 1;
+	stock = f_strjoin(stock, buffer);
+	while (f_strchr(stock, '\n') == NULL && ret > 0)
 	{
-		free(str);
-		free(line);
-		return (0);
+		ret = read(fd, buffer, BUFFER_SIZE);
+		if (ret < 0)
+		{
+			free(stock);
+			return (NULL);
+		}
+		buffer[ret] = '\0';
+		stock = f_strjoin(stock, buffer);
 	}
-	return (line);
+	return (ft_line_results(ret, stock, buffer));
 }
+

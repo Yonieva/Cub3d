@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:35:50 by yonieva           #+#    #+#             */
-/*   Updated: 2024/11/21 22:56:23 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/11/24 16:18:56 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,5 @@ int	parse_args(t_data *data, char **av)
 	if (check_textures_validity(data, &data->texinfo) == FAILURE)
 		return (free_data(data));
 	init_player_direction(data);
-	if (DEBUG_MSG)
-		debug_display_data(data);
 	return (0);
 }

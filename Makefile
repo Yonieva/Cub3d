@@ -21,6 +21,7 @@ LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 # Sources
 SRC_PATH = ./code_source/
 SRC		= 	main.c \
+			intro/main_menu.c \
 			init/init_data.c \
 			init/init_mlx.c \
 			init/init_textures.c \
@@ -30,11 +31,22 @@ SRC		= 	main.c \
 			parsing/check_map.c \
 			parsing/check_map_utils.c \
 			parsing/check_textures.c \
+			parsing/create_map.c \
 			parsing/fill_color.c \
 			parsing/utils.c \
+			render/render.c \
+			render/texture.c \
+			render/raycasting.c \
+			render/minimap_render.c \
+			render/minimap_image.c \
 			movement/player_dir.c \
+			movement/input.c \
+			movement/player_move.c \
+			movement/player_position.c \
+			movement/player_rotate.c \
+			exit/error.c \
 			exit/exit.c \
-			exit/free.c \
+			exit/free.c
 
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 
@@ -55,6 +67,7 @@ all: $(OBJ_PATH) $(MLX) $(LIBFT) $(NAME)
 $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)
 	mkdir -p $(OBJ_PATH)/init
+	mkdir -p $(OBJ_PATH)/intro
 	mkdir -p $(OBJ_PATH)/parsing
 	mkdir -p $(OBJ_PATH)/movement
 	mkdir -p $(OBJ_PATH)/render

@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:44:56 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/17 17:35:56 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/11/25 18:24:49 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 int	ft_isprint(int c)
 {
-	return (c >= 32 && c <= 126);
+	if (c >= 33 && c < 127)
+		return (1);
+	else
+		return (0);
 }
