@@ -15,6 +15,7 @@
 /*XK_Left fait partie de la norme X11 keysym*/
 static int	key_press_handler(int key, t_data *data)
 {
+	data->start_game = 1;
 	if (key == XK_Escape)
 		quit_cub3d(data);
 	if (key == XK_Left)

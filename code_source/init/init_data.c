@@ -82,4 +82,6 @@ void	init_data(t_data *data)
 	init_img_clean(&data->minimap);
 	data->texture_pixels = NULL;
 	data->textures = NULL;
+	data->start_game = 0;
+	data->title_img = NULL;
 }

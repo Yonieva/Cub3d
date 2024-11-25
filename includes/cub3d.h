@@ -34,10 +34,10 @@
 
 typedef unsigned long	t_ulong;
 
-//define WIN_WIDTH 960
-//define WIN_HEIGHT 720
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 480
+//define WIN_WIDTH 960 640
+//define WIN_HEIGHT 600 480
+# define WIN_WIDTH 960
+# define WIN_HEIGHT 600
 
 # define TEX_SIZE 64
 
@@ -49,7 +49,7 @@ typedef unsigned long	t_ulong;
 #  define BONUS 1
 # endif
 
-# define MOVESPEED 0.0125
+# define MOVESPEED 0.0325
 # define ROTSPEED 0.015
 
 # define DIST_EDGE_MOUSE_WRAP 20
@@ -205,11 +205,14 @@ typedef struct s_data
 	int			**textures;
 	t_texinfo	texinfo;
 	t_img		minimap;
+	int			start_game;
+	void		*title_img;
 }	t_data;
 /*********************************************************************/
 /********************************FONCTIONS****************************/
 /*********************************************************************/
 void	print_controls(void);
+void	draw_title_screen(t_data *data);
 //*********************************init
 void	init_data(t_data *data);
 void	init_img_clean(t_img *img);

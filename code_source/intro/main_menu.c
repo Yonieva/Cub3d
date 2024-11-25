@@ -12,6 +12,12 @@
 
 #include "cub3d.h"
 
+void draw_title_screen(t_data *data)
+{
+    mlx_put_image_to_window(data->mlx, data->win, data->title_img, 0, 0);
+}
+
+
 void	print_controls(void)
 {
 	printf(RED"\n");

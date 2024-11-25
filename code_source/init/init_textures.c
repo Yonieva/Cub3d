@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/11/21 22:50:15 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/11/25 21:19:53 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void	init_textures(t_data *data)
 	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
 	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
 	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
+	data->title_img = mlx_xpm_file_to_image(
+		data->mlx,
+		"./textures/title_screen.xpm",
+		&data->win_width,
+		&data->win_height);
 }
 
 void	init_texinfo(t_texinfo *textures)
