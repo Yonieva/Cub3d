@@ -26,6 +26,7 @@
 # include <string.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/time.h>
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
@@ -213,6 +214,7 @@ typedef struct s_data
 /*********************************************************************/
 void	print_controls(void);
 void	draw_title_screen(t_data *data);
+void	play_intro_video(t_data *data);
 //*********************************init
 void	init_data(t_data *data);
 void	init_img_clean(t_img *img);

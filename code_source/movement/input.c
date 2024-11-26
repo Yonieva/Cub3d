@@ -15,13 +15,14 @@
 /*XK_Left fait partie de la norme X11 keysym*/
 static int	key_press_handler(int key, t_data *data)
 {
-	data->start_game = 1;
 	if (key == XK_Escape)
 		quit_cub3d(data);
 	if (key == XK_Left)
 		data->player.rotate -= 1;
 	if (key == XK_Right)
 		data->player.rotate += 1;
+	if (key == XK_w && data->start_game == 0)
+		data->start_game = 1;
 	if (key == XK_w)
 		data->player.move_y = 1;
 	if (key == XK_a)

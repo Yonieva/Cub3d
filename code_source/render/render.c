@@ -73,6 +73,8 @@ void	render_images(t_data *data)
 {
 	if(!data->start_game)
 		draw_title_screen(data);
+	else if(data->start_game == 1)
+		play_intro_video(data);
 	else
 	{
 		render_raycast(data);

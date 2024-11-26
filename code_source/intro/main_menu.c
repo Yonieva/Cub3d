@@ -75,3 +75,4 @@ void	print_controls(void)
 		printf(YELLOW "\tMouse" RESET ": rotate view\n");
 	printf("\n");
 }
+

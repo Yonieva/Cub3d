@@ -22,6 +22,7 @@ LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 SRC_PATH = ./code_source/
 SRC		= 	main.c \
 			intro/main_menu.c \
+			intro/intro.c \
 			init/init_data.c \
 			init/init_mlx.c \
 			init/init_textures.c \
