@@ -3,8 +3,8 @@ C 50,50,50
 
 NO textures/wall/wall_N.xpm
 SO textures/wall/wall_S.xpm
-WE textures/wall/wall_N.xpm
-EA textures/wall/wall_S.xpm
+WE textures/wall/wall_W.xpm
+EA textures/wall/wall_E.xpm
 
 1111111111111111111
 10W1001001001000001
