@@ -17,7 +17,7 @@ en utilisant un tableau de pixels.*/
 void	set_image_pixel(t_img *image, int x, int y, int color)
 {
 	int	pixel;
-	/*chaque pixel est représenté par 4 octets (pour le format RGBA*/
+	/*chaque pixel est représenté par 4 octets (pour le format RGBA)*/
 	pixel = y * (image->size_line / 4) + x;
 	image->addr[pixel] = color;
 }
