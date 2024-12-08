@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/12/08 19:56:26 by gaesteve          #+#    #+#              #
+#    Updated: 2024/12/08 20:06:01 by gaesteve         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # Program file name
 NAME	= cub3d
 
@@ -66,46 +78,55 @@ all: $(OBJ_PATH) $(MLX) $(LIBFT) $(NAME)
 
 # Objects directory rule
 $(OBJ_PATH):
-	mkdir -p $(OBJ_PATH)
-	mkdir -p $(OBJ_PATH)/init
-	mkdir -p $(OBJ_PATH)/intro
-	mkdir -p $(OBJ_PATH)/parsing
-	mkdir -p $(OBJ_PATH)/movement
-	mkdir -p $(OBJ_PATH)/render
-	mkdir -p $(OBJ_PATH)/debug
-	mkdir -p $(OBJ_PATH)/exit
+	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH)/init
+	@mkdir -p $(OBJ_PATH)/intro
+	@mkdir -p $(OBJ_PATH)/parsing
+	@mkdir -p $(OBJ_PATH)/movement
+	@mkdir -p $(OBJ_PATH)/render
+	@mkdir -p $(OBJ_PATH)/debug
+	@mkdir -p $(OBJ_PATH)/exit
+	@echo "Creating object directories..."
 
 # Objects rule
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	$(CC) $(CFLAGS) -DBONUS=$(BONUS) -c $< -o $@ $(INC)
+	@$(CC) $(CFLAGS) -DBONUS=$(BONUS) -c $< -o $@ $(INC)
 
 # Project file rule
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
+	@echo "Compilation en cours..."
+	@$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
+	@echo "$(NAME) est prêt !"
 
 # Libft rule
 $(LIBFT):
-	make -sC $(LIBFT_PATH)
+	@echo "Building libft..."
+	@make -sC $(LIBFT_PATH)
 
 # MLX rule
 $(MLX):
-	make -sC $(MLX_PATH)
+	@echo "Building minilibx..."
+	@make -sC $(MLX_PATH)
 
 bonus:
-	make all BONUS=1
+	@make all BONUS=1
 
 # Clean up build files rule
 clean:
-	rm -rf $(OBJ_PATH)
-	make -C $(LIBFT_PATH) clean
-	make -C $(MLX_PATH) clean
+	@echo "Cleaning object files..."
+	@rm -rf $(OBJ_PATH)
+	@make -sC $(LIBFT_PATH) clean >/dev/null
+	@make -sC $(MLX_PATH) clean >/dev/null
 
 # Remove program executable
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LIBFT_PATH) fclean
+	@echo "Removing executable..."
+	@rm -f $(NAME)
+	@make -sC $(LIBFT_PATH) fclean >/dev/null
 
 # Clean + remove executable
 re: fclean all
 
 .PHONY: all re clean fclean bonus
+
+
