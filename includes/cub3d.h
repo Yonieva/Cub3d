@@ -193,6 +193,13 @@ typedef struct s_player
 	int		rotate;
 }	t_player;
 
+typedef struct s_door
+{
+	int pos_x;
+	int pos_y;
+	int is_open;
+}	t_door;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -201,6 +208,7 @@ typedef struct s_data
 	int			win_width;
 	t_mapinfo	mapinfo;
 	char		**map;
+	t_door		door;
 	t_player	player;
 	t_ray		ray;
 	int			**texture_pixels;
@@ -225,6 +233,7 @@ void	init_texture_img(t_data *data, t_img *image, char *path);
 void	init_img(t_data *data, t_img *image, int width, int height);
 void	init_texinfo(t_texinfo *textures);
 void	init_textures(t_data *data);
+void	init_door(t_data *data);
 //*********************************parsing
 int		parse_args(t_data *data, char **av);
 int		check_file(char *arg, bool cub);
@@ -243,6 +252,7 @@ void	listen_for_input(t_data *data);
 int		move_player(t_data *data);
 int		validate_move(t_data *data, double new_x, double new_y);
 int		rotate_player(t_data *data, double rotdir);
+void	check_door(t_data *data);
 //*********************************render
 void	render_images(t_data *data);
 int		render(t_data *data);

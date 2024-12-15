@@ -88,6 +88,8 @@ int	render(t_data *data)
 	data->player.has_moved += move_player(data);
 	if (data->player.has_moved == 0)
 		return (0);
+	if (BONUS)
+		check_door(data);
 	render_images(data);
 	return (0);
 }

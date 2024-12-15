@@ -21,6 +21,8 @@ int	main(int ac, char **av)
 	init_data(&data);
 	if (parse_args(&data, av) != 0)
 		return (1);
+	if (BONUS)
+		init_door(&data);
 	init_mlx(&data);
 	init_textures(&data);
 	print_controls();
