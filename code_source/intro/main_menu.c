@@ -17,8 +17,36 @@ void	draw_title_screen(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->title_img, 0, 0);
 }
 
+static void	print_terminal(void)
+{
+    printf("                          ,--.\n");
+    printf("                         K,   }\n");
+    printf("                        /  `Y`\n");
+    printf("                   _   /   /\n");
+    printf("                  {_'-K.__/\n");
+    printf("                   `/-.__L._\n");
+    printf("                    /  ' /`\\_}\n");
+    printf("                   /  ' /     -CASTLEVANIA 3D-\n");
+    printf("     ,-'~~~~    ~~/  ' /_\n");
+    printf("   ,'             ``~~~%%',\n");
+    printf("  (                        Y\n");
+    printf(" {                      %% I\n");
+    printf("{      -                    `.\n");
+    printf("|       ',                %% )\n");
+    printf("|        |   ,..__      __. Y\n");
+    printf("|    .,_./  Y ' / ^Y   J   )|\n");
+    printf("\\           |' /   |   |   ||\n");
+    printf(" \\          L_/    . _ (_,.'(\n");
+    printf("  \\,   ,      ^^\"\"' / |      )\n");
+    printf("    \\_  \\          /,L]     /\n");
+    printf("      '-_`-,       ` `   ./`\n");
+    printf("         `-(_            )\n");
+    printf("             ^^\\..___,.--`\n");
+}
+
 void	print_controls(void)
 {
+	print_terminal();
 	printf("░█▀▀░█▀█░█▀█░▀█▀░█▀▄░█▀█░█░░░█▀▀\n");
 	printf("░█░░░█░█░█░█░░█░░█▀▄░█░█░█░░░▀▀█\n");
 	printf("░▀▀▀░▀▀▀░▀░▀░░▀░░▀░▀░▀▀▀░▀▀▀░▀▀▀\n");
