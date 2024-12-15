@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 21:08:47 by gaesteve          #+#    #+#             */
-/*   Updated: 2024/12/15 21:17:00 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/15 23:48:46 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ void init_door(t_data *data)
 			{
 				data->door.pos_x = x;
 				data->door.pos_y = y;
-				data->door.is_open = 0; // La porte est fermée par défaut
-				printf("Door found at (%d, %d)\n", x, y);
+				data->door.is_open = 0;
 				return;
 			}
 			x++;
 		}
 		y++;
 	}
-	data->door.pos_x = -1; // Aucune porte trouvée
+	data->door.pos_x = -1;
 	data->door.pos_y = -1;
 }

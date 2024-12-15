@@ -64,8 +64,6 @@ typedef unsigned long	t_ulong;
 # define MMAP_COLOR_SPACE 0x404040
 # define MMAP_COLOR_DOOR 0xFFFF00
 
-#define DOOR 4
-
 //error msg
 # define ERR_FILE_NOT_CUB "Not a .cub file"
 # define ERR_FILE_NOT_XPM "Not an .xpm file"
@@ -106,7 +104,8 @@ enum e_texture_index
 	NORTH = 0,
 	SOUTH = 1,
 	EAST = 2,
-	WEST = 3
+	WEST = 3,
+	DOOR = 4
 };
 /*********************************************************************/
 /*****************************STRUCTURES******************************/

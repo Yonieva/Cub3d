@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/15 22:32:51 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/15 23:48:41 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ static int	*xpm_to_img(t_data *data, char *path)
 
 void	init_textures(t_data *data)
 {
-	/*un tableau qui va stocker les textures pour chaque direction*/
-	data->textures = ft_calloc(5, sizeof * data->textures);
+	data->textures = ft_calloc(6, sizeof * data->textures);
 	if (!data->textures)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
