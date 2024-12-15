@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/11/25 21:19:53 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/12/15 22:32:51 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	init_textures(t_data *data)
 	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
 	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
 	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
+	data->textures[DOOR] = xpm_to_img(data, "./textures/wall/door.xpm");
 	data->title_img = mlx_xpm_file_to_image(
 		data->mlx,
 		"./textures/title_screen.xpm",

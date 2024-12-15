@@ -21,6 +21,11 @@ Si le rayon se dirige vers le bas (ray->dir_y > 0), la texture du SUD (SOUTH) es
 Si le rayon se dirige vers le haut (ray->dir_y <= 0), la texture du NORD (NORTH) est utilisée*/
 static void	get_texture_index(t_data *data, t_ray *ray)
 {
+	if (data->map[ray->map_y][ray->map_x] == 'D')
+	{
+		data->texinfo.index = DOOR; // Utiliser la texture de la porte
+		return;
+	}
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
@@ -37,7 +42,7 @@ static void	get_texture_index(t_data *data, t_ray *ray)
 	}
 }
 
-/*Cette fonction applique la texture sélectionnée sur une colonne de l'écran 
+/*Cette fonction applique la texture sélectionnée sur une colonne de l'écran
 en calculant quel pixel de la texture correspond à chaque ligne de pixels entre draw_start et draw_end.
 t_data *data : Données du jeu, incluant la liste des textures et des pixels à afficher.
 t_texinfo *tex : Contient les informations sur la texture (dimensions, index, position actuelle).
@@ -70,7 +75,7 @@ void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x)
 	}
 }
 
-/*initialise un tableau 2d 
+/*initialise un tableau 2d
 pour stocker les infos des pixels des textures
 pour reagir au changement de dimensions de la fenetre*/
 void	init_texture_pixels(t_data *data)
