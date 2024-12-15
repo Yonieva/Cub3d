@@ -41,6 +41,9 @@ static void	draw_minimap_tile(t_minimap *minimap, int x, int y)
 	else if (minimap->map[y][x] == '0')
 		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
 			y * minimap->tile_size, MMAP_COLOR_FLOOR);
+	else if (minimap->map[y][x] == 'D')
+		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
+			y * minimap->tile_size, MMAP_COLOR_DOOR);
 	else if (minimap->map[y][x] == ' ')
 		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
 			y * minimap->tile_size, MMAP_COLOR_SPACE);

@@ -62,6 +62,7 @@ typedef unsigned long	t_ulong;
 # define MMAP_COLOR_WALL 0x808080
 # define MMAP_COLOR_FLOOR 0xE6E6E6
 # define MMAP_COLOR_SPACE 0x404040
+# define MMAP_COLOR_DOOR 0xFFFF00
 
 //error msg
 # define ERR_FILE_NOT_CUB "Not a .cub file"

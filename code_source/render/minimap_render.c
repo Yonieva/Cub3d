@@ -49,6 +49,8 @@ static char	*add_minimap_line(t_data *d, t_minimap *m, int y)
 			line[x] = '1';
 		else if (d->map[y + m->offset_y][x + m->offset_x] == '0')
 			line[x] = '0';
+		else if (d->map[y + m->offset_y][x + m->offset_x] == 'D')
+			line[x] = 'D';
 		else
 			line[x] = '\0';
 		x++;
