@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/18 13:42:04 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:12:23 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	init_textures(t_data *data)
 	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
 	if (BONUS)
 	{
-		data->textures[DOOR] = xpm_to_img(data, "./textures/wall/door.xpm");
-		data->textures[SKULL] = xpm_to_img(data, "./textures/wall/skull.xpm");
+		data->textures[DOOR] = xpm_to_img(data, "./textures/bonus/door.xpm");
+		data->textures[SKULL] = xpm_to_img(data, "./textures/bonus/skull.xpm");
 	}
 	data->title_img = mlx_xpm_file_to_image(
 		data->mlx,
