@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/18 14:12:23 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:37:18 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,76 @@ int	*xpm_to_img(t_data *data, char *path)
 	return (buffer);
 }
 
+// void	init_textures(t_data *data)
+// {
+// 	data->textures = ft_calloc(7, sizeof * data->textures);
+// 	if (!data->textures)
+// 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
+// 	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
+// 	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
+// 	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
+// 	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
+// 	if (BONUS)
+// 	{
+// 		data->textures[DOOR] = xpm_to_img(data, "./textures/bonus/door.xpm");
+// 		data->textures[SKULL] = xpm_to_img(data, "./textures/bonus/skull.xpm");
+// 	}
+// 	data->title_img = mlx_xpm_file_to_image(
+// 		data->mlx,
+// 		"./textures/title_screen.xpm",
+// 		&data->win_width,
+// 		&data->win_height);
+// }
+
+static void	load_texture(t_data *data, int index, char *path)
+{
+	data->textures[index] = xpm_to_img(data, path);
+	if (!data->textures[index])
+		clean_exit(data, err_msg(path, ERR_TEX_INVALID, FAILURE));
+}
+
 void	init_textures(t_data *data)
 {
-	data->textures = ft_calloc(7, sizeof * data->textures);
+	int		i;
+	char	*texture_paths[] = {
+		data->texinfo.north,
+		data->texinfo.south,
+		data->texinfo.east,
+		data->texinfo.west,
+		"./textures/bonus/door.xpm",
+		"./textures/bonus/skull.xpm",
+		"./textures/bonus/library1.xpm",
+		"./textures/bonus/library2.xpm",
+		"./textures/bonus/secret.xpm",
+		"./textures/bonus/wbase.xpm",
+		"./textures/bonus/wblood.xpm",
+		"./textures/bonus/wdark.xpm",
+		"./textures/bonus/wpaint.xpm",
+		"./textures/bonus/wred.xpm"
+	};
+	int		texture_count = sizeof(texture_paths) / sizeof(texture_paths[0]);
+	data->textures = ft_calloc(texture_count, sizeof *data->textures);
 	if (!data->textures)
-		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
-	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
-	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
-	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
-	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
-	if (BONUS)
+		clean_exit(data, err_msg(NULL, ERR_MALLOC, FAILURE));
+
+	i = 0;
+	while (i < texture_count)
 	{
-		data->textures[DOOR] = xpm_to_img(data, "./textures/bonus/door.xpm");
-		data->textures[SKULL] = xpm_to_img(data, "./textures/bonus/skull.xpm");
+		load_texture(data, i, texture_paths[i]);
+		i++;
 	}
+}
+
+void	init_title_screen(t_data *data)
+{
 	data->title_img = mlx_xpm_file_to_image(
 		data->mlx,
 		"./textures/title_screen.xpm",
 		&data->win_width,
 		&data->win_height);
+	if (!data->title_img)
+		clean_exit(data, err_msg("./textures/title_screen.xpm",
+			ERR_TEX_INVALID, FAILURE));
 }
 
 void	init_texinfo(t_texinfo *textures)

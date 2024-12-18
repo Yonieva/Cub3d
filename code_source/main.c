@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 		init_door(&data);
 	init_mlx(&data);
 	init_textures(&data);
+	init_title_screen(&data);
 	print_controls();
 	render_images(&data);
 	listen_for_input(&data);

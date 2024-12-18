@@ -106,7 +106,15 @@ enum e_texture_index
 	EAST = 2,
 	WEST = 3,
 	DOOR = 4,
-	SKULL = 5
+	SKULL = 5,
+	LIB1 = 6,
+	LIB2 = 7,
+	SECRET = 8,
+	WBASE = 9,
+	WBLOOD = 10,
+	WDARK = 11,
+	WPAINT = 12,
+	WRED = 13
 };
 
 /*********************************************************************/
@@ -237,6 +245,7 @@ void	init_img(t_data *data, t_img *image, int width, int height);
 void	init_texinfo(t_texinfo *textures);
 void	init_textures(t_data *data);
 void	init_door(t_data *data);
+void	init_title_screen(t_data *data);
 int		*xpm_to_img(t_data *data, char *path);
 //*********************************parsing
 int		parse_args(t_data *data, char **av);

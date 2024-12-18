@@ -45,14 +45,10 @@ static char	*add_minimap_line(t_data *d, t_minimap *m, int y)
 		else if ((int)d->player.pos_x == (x + m->offset_x)
 			&& (int)d->player.pos_y == (y + m->offset_y))
 			line[x] = 'P';
-		else if (d->map[y + m->offset_y][x + m->offset_x] == '1')
-			line[x] = '1';
+		else if (ft_strchr("1CKLVBHOTR", d->map[y + m->offset_y][x + m->offset_x]))
+			line[x] = d->map[y + m->offset_y][x + m->offset_x];
 		else if (d->map[y + m->offset_y][x + m->offset_x] == '0')
 			line[x] = '0';
-		else if (d->map[y + m->offset_y][x + m->offset_x] == 'D')
-			line[x] = 'D';
-		else if (d->map[y + m->offset_y][x + m->offset_x] == 'C')
-			line[x] = 'C';
 		else
 			line[x] = ' ';
 		x++;

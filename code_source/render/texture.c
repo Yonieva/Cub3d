@@ -21,30 +21,44 @@ Si le rayon se dirige vers le bas (ray->dir_y > 0), la texture du SUD (SOUTH) es
 Si le rayon se dirige vers le haut (ray->dir_y <= 0), la texture du NORD (NORTH) est utilisée*/
 static void get_texture_index(t_data *data, t_ray *ray)
 {
-	if (data->map[ray->map_y][ray->map_x] == 'D')
+	char	cell = data->map[ray->map_y][ray->map_x];
+
+	if (cell == 'D')
+		data->texinfo.index = DOOR;
+	else if (cell == 'C')
+		data->texinfo.index = SKULL;
+	else if (cell == 'K')
+		data->texinfo.index = LIB1;
+	else if (cell == 'L')
+		data->texinfo.index = LIB2;
+	else if (cell == 'V')
+		data->texinfo.index = SECRET;
+	else if (cell == 'B')
+		data->texinfo.index = WBASE;
+	else if (cell == 'H')
+		data->texinfo.index = WBLOOD;
+	else if (cell == 'O')
+		data->texinfo.index = WDARK;
+	else if (cell == 'T')
+		data->texinfo.index = WPAINT;
+	else if (cell == 'R')
+		data->texinfo.index = WRED;
+	if (cell == '1') // Murs standards
 	{
-		data->texinfo.index = DOOR; // Texture de la porte
-		return;
-	}
-	if (data->map[ray->map_y][ray->map_x] == 'C')
-	{
-		data->texinfo.index = SKULL; // Texture du crane
-		return;
-	}
-	// Textures standard pour les murs
-	if (ray->side == 0)
-	{
-		if (ray->dir_x < 0)
-			data->texinfo.index = WEST;
+		if (ray->side == 0)
+		{
+			if (ray->dir_x < 0)
+				data->texinfo.index = WEST;
+			else
+				data->texinfo.index = EAST;
+		}
 		else
-			data->texinfo.index = EAST;
-	}
-	else
-	{
-		if (ray->dir_y > 0)
-			data->texinfo.index = SOUTH;
-		else
-			data->texinfo.index = NORTH;
+		{
+			if (ray->dir_y > 0)
+				data->texinfo.index = SOUTH;
+			else
+				data->texinfo.index = NORTH;
+		}
 	}
 }
 
