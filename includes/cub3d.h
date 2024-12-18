@@ -105,8 +105,10 @@ enum e_texture_index
 	SOUTH = 1,
 	EAST = 2,
 	WEST = 3,
-	DOOR = 4
+	DOOR = 4,
+	SKULL = 5
 };
+
 /*********************************************************************/
 /*****************************STRUCTURES******************************/
 typedef struct s_img
@@ -235,6 +237,7 @@ void	init_img(t_data *data, t_img *image, int width, int height);
 void	init_texinfo(t_texinfo *textures);
 void	init_textures(t_data *data);
 void	init_door(t_data *data);
+int		*xpm_to_img(t_data *data, char *path);
 //*********************************parsing
 int		parse_args(t_data *data, char **av);
 int		check_file(char *arg, bool cub);

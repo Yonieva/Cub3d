@@ -32,10 +32,12 @@ static void	set_minimap_tile_pixels(t_minimap *minimap, int x, int y, int color)
 
 static void	draw_minimap_tile(t_minimap *minimap, int x, int y)
 {
+	if (x >= minimap->size || y >= minimap->size || x < 0 || y < 0)
+		return;
 	if (minimap->map[y][x] == 'P')
 		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
 			y * minimap->tile_size, MMAP_COLOR_PLAYER);
-	else if (minimap->map[y][x] == '1')
+	else if (minimap->map[y][x] == '1' || minimap->map[y][x] == 'C') // Groupement '1' et 'C'
 		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
 			y * minimap->tile_size, MMAP_COLOR_WALL);
 	else if (minimap->map[y][x] == '0')
@@ -48,6 +50,7 @@ static void	draw_minimap_tile(t_minimap *minimap, int x, int y)
 		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
 			y * minimap->tile_size, MMAP_COLOR_SPACE);
 }
+
 
 static void	set_minimap_border_image_pixels(t_minimap *minimap, int color)
 {

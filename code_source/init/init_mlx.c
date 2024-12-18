@@ -41,15 +41,17 @@ void	init_texture_img(t_data *data, t_img *image, char *path)
 
 void	init_mlx(t_data *data)
 {
-	/*Initialise la mlx*/ 
+	/*Initialise la mlx*/
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		clean_exit(data, err_msg("mlx", ERR_MLX_START, 1));
-	/*Creaton de la fenetre*/ 
+	/*Creaton de la fenetre*/
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Castlevania 3d");
 	if (!data->win)
 		clean_exit(data, err_msg("mlx", ERR_MLX_WIN, 1));
-	/*Position curseur souris, au centre de notre fenetre*/ 
+	/*Position curseur souris, au centre de notre fenetre*/
+	data->win_width = WIN_WIDTH;
+	data->win_height = WIN_HEIGHT;
 	if (BONUS)
 		mlx_mouse_move(data->mlx, data->win, data->win_width / 2,
 			data->win_height / 2);

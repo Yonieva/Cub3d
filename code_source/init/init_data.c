@@ -12,7 +12,6 @@
 
 #include "cub3d.h"
 
-
 void	init_img_clean(t_img *img)
 {
 	img->img = NULL;

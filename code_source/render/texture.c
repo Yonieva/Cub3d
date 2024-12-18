@@ -19,13 +19,19 @@ Si le rayon se dirige vers la droite (ray->dir_x >= 0), la texture de l'EST (EAS
 Si le mur frappé est vertical (ray->side == 1) :
 Si le rayon se dirige vers le bas (ray->dir_y > 0), la texture du SUD (SOUTH) est utilisée.
 Si le rayon se dirige vers le haut (ray->dir_y <= 0), la texture du NORD (NORTH) est utilisée*/
-static void	get_texture_index(t_data *data, t_ray *ray)
+static void get_texture_index(t_data *data, t_ray *ray)
 {
 	if (data->map[ray->map_y][ray->map_x] == 'D')
 	{
-		data->texinfo.index = DOOR; // Utiliser la texture de la porte
+		data->texinfo.index = DOOR; // Texture de la porte
 		return;
 	}
+	if (data->map[ray->map_y][ray->map_x] == 'C')
+	{
+		data->texinfo.index = SKULL; // Texture du crane
+		return;
+	}
+	// Textures standard pour les murs
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
@@ -41,6 +47,8 @@ static void	get_texture_index(t_data *data, t_ray *ray)
 			data->texinfo.index = NORTH;
 	}
 }
+
+
 
 /*Cette fonction applique la texture sélectionnée sur une colonne de l'écran
 en calculant quel pixel de la texture correspond à chaque ligne de pixels entre draw_start et draw_end.
@@ -80,21 +88,25 @@ pour stocker les infos des pixels des textures
 pour reagir au changement de dimensions de la fenetre*/
 void	init_texture_pixels(t_data *data)
 {
-	int	i;
+	int i;
 
-	if (data->texture_pixels)
+	if (data->texture_pixels) // S'assurer qu'il n'y a pas déjà des données
 		free_tab((void **)data->texture_pixels);
-	data->texture_pixels = ft_calloc(data->win_height + 1,
-			sizeof * data->texture_pixels);
+	data->texture_pixels = ft_calloc(data->win_height + 1, sizeof(int *));
 	if (!data->texture_pixels)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	i = 0;
 	while (i < data->win_height)
 	{
-		data->texture_pixels[i] = ft_calloc(data->win_width + 1,
-				sizeof * data->texture_pixels);
+		data->texture_pixels[i] = ft_calloc(data->win_width + 1, sizeof(int));
 		if (!data->texture_pixels[i])
 			clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 		i++;
 	}
+	data->texture_pixels[i] = NULL;
 }
+
+
+
+
+

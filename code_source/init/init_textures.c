@@ -6,21 +6,19 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/15 23:48:41 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:42:04 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /*on copie les images et on destroy direct comme ca c est deja liberer*/
-
-static int	*xpm_to_img(t_data *data, char *path)
+int	*xpm_to_img(t_data *data, char *path)
 {
 	t_img	tmp;
 	int		*buffer;
 	int		x;
 	int		y;
-
 	/*Chargement de la texture stockée dans tmp temporairement.*/
 	init_texture_img(data, &tmp, path);
 	/*tableau qui contiendra tous les pixels de la texture*/
@@ -47,14 +45,18 @@ static int	*xpm_to_img(t_data *data, char *path)
 
 void	init_textures(t_data *data)
 {
-	data->textures = ft_calloc(6, sizeof * data->textures);
+	data->textures = ft_calloc(7, sizeof * data->textures);
 	if (!data->textures)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
 	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
 	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
 	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
-	data->textures[DOOR] = xpm_to_img(data, "./textures/wall/door.xpm");
+	if (BONUS)
+	{
+		data->textures[DOOR] = xpm_to_img(data, "./textures/wall/door.xpm");
+		data->textures[SKULL] = xpm_to_img(data, "./textures/wall/skull.xpm");
+	}
 	data->title_img = mlx_xpm_file_to_image(
 		data->mlx,
 		"./textures/title_screen.xpm",

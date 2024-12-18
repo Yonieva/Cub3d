@@ -41,7 +41,7 @@ static char	*add_minimap_line(t_data *d, t_minimap *m, int y)
 	{
 		if (!is_valid_map_coord(y + m->offset_y, d->mapinfo.height)
 			|| !is_valid_map_coord(x + m->offset_x, d->mapinfo.width))
-			line[x] = '\0';
+			line[x] = ' ';
 		else if ((int)d->player.pos_x == (x + m->offset_x)
 			&& (int)d->player.pos_y == (y + m->offset_y))
 			line[x] = 'P';
@@ -51,8 +51,10 @@ static char	*add_minimap_line(t_data *d, t_minimap *m, int y)
 			line[x] = '0';
 		else if (d->map[y + m->offset_y][x + m->offset_x] == 'D')
 			line[x] = 'D';
+		else if (d->map[y + m->offset_y][x + m->offset_x] == 'C')
+			line[x] = 'C';
 		else
-			line[x] = '\0';
+			line[x] = ' ';
 		x++;
 	}
 	return (line);

@@ -30,7 +30,7 @@ static int	check_map_elements(t_data *data, char **map_tab)
 				j++;
 			if (!BONUS && !(ft_strchr("10NSEW", map_tab[i][j])))
 				return (err_msg(data->mapinfo.path, ERR_INV_LETTER, FAILURE));
-			if (BONUS && !(ft_strchr("10NSEWD", map_tab[i][j])))
+			if (BONUS && !(ft_strchr("10NSEWDC", map_tab[i][j])))
 				return (err_msg(data->mapinfo.path, ERR_INV_LETTER, FAILURE));
 			if (ft_strchr("NSEW", map_tab[i][j]) && data->player.dir != '0')
 				return (err_msg(data->mapinfo.path, ERR_NUM_PLAYER, FAILURE));
