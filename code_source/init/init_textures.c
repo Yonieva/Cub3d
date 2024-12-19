@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/19 19:07:03 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:05:57 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,6 @@ int	*xpm_to_img(t_data *data, char *path)
 
 static void	load_texture(t_data *data, int index, char *path)
 {
-	/* Si le chemin est NULL, pas besoin de charger */
-	if (!path)
-		return;
-
 	data->textures[index] = xpm_to_img(data, path);
 	if (!data->textures[index])
 		clean_exit(data, err_msg(path, ERR_TEX_INVALID, FAILURE));
