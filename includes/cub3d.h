@@ -55,6 +55,10 @@ typedef unsigned long	t_ulong;
 
 # define DIST_EDGE_MOUSE_WRAP 20
 
+//Floor et ceiling bonus
+#define FLOOR_TEXTURE_INDEX 14
+#define CEILING_TEXTURE_INDEX 15
+
 //minimap
 # define MMAP_PIXEL_SIZE 128
 # define MMAP_VIEW_DIST 4
@@ -114,7 +118,9 @@ enum e_texture_index
 	WBLOOD = 10,
 	WDARK = 11,
 	WPAINT = 12,
-	WRED = 13
+	WRED = 13,
+	TFLOOR = 14,
+	TCEILING = 15
 };
 
 /*********************************************************************/
@@ -134,6 +140,8 @@ typedef struct s_texinfo
 	char			*south;
 	char			*west;
 	char			*east;
+	char			*floor_texture;
+	char			*ceiling_texture;
 	int				*floor;
 	int				*ceiling;
 	unsigned long	hex_floor;
@@ -255,6 +263,7 @@ int		get_file_data(t_data *data, char **map);
 int		check_map_validity(t_data *data, char **map_tab);
 int		check_map_sides(t_mapinfo *map, char **map_tab);
 int		check_textures_validity(t_data *data, t_texinfo *textures);
+char	*get_texture_path(char *line, int j);
 int		fill_color(t_data *data, t_texinfo *textures, char *line, int j);
 int		create_map(t_data *data, char **file, int i);
 int		is_a_white_space(char c);

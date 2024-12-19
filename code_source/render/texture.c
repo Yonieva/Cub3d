@@ -62,8 +62,6 @@ static void get_texture_index(t_data *data, t_ray *ray)
 	}
 }
 
-
-
 /*Cette fonction applique la texture sélectionnée sur une colonne de l'écran
 en calculant quel pixel de la texture correspond à chaque ligne de pixels entre draw_start et draw_end.
 t_data *data : Données du jeu, incluant la liste des textures et des pixels à afficher.

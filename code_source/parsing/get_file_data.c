@@ -13,7 +13,7 @@
 #include "cub3d.h"
 
 /*extrait le chemin d une texture à partir de la position j.*/
-static char	*get_texture_path(char *line, int j)
+char	*get_texture_path(char *line, int j)
 {
 	int		len;
 	int		i;
@@ -44,11 +44,14 @@ static char	*get_texture_path(char *line, int j)
 /*associe les textures(north, south, west, east) aux chemins extraits*/
 static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 {
-	/*si char imprimable apres NO SE etc -> erreur*/
-	if (line[j + 2] && ft_isprint(line[j + 2]))
-		return (ERR);
-	/*regarde les deux premiers char et associe le chemin en fonction*/
-	if (line[j] == 'N' && line[j + 1] == 'O' && !(textures->north))
+	// Si c'est une texture pour le sol
+	if (line[j] == 'F' && !(textures->floor_texture))
+		textures->floor_texture = get_texture_path(line, j + 1);
+	// Si c'est une texture pour le plafond
+	else if (line[j] == 'C' && !(textures->ceiling_texture))
+		textures->ceiling_texture = get_texture_path(line, j + 1);
+	// Gestion des directions standard (NO, SO, etc.)
+	else if (line[j] == 'N' && line[j + 1] == 'O' && !(textures->north))
 		textures->north = get_texture_path(line, j + 2);
 	else if (line[j] == 'S' && line[j + 1] == 'O' && !(textures->south))
 		textures->south = get_texture_path(line, j + 2);
@@ -66,27 +69,18 @@ static int	ignore_whitespaces_get_info(t_data *data, char **map, int i, int j)
 {
 	while (map[i][j] == ' ' || map[i][j] == '\t' || map[i][j] == '\n')
 		j++;
-	/*Si le caractère est imprimable et n'est pas un chiffre*/
 	if (ft_isprint(map[i][j]) && !ft_isdigit(map[i][j]))
 	{
-	/*vérifie si les 2 premiers caractères (NO,SO..) indiquent une texture*/
-		if (map[i][j + 1] && ft_isprint(map[i][j + 1])
-			&& !ft_isdigit(map[i][j]))
+		if (map[i][j + 1] && ft_isprint(map[i][j + 1]))
 		{
-			/*tente de remplir la struct avec les infos extraites*/
 			if (fill_direction_textures(&data->texinfo, map[i], j) == ERR)
 				return (err_msg(data->mapinfo.path, ERR_TEX_INVALID, FAILURE));
 			return (BREAK);
 		}
-		/*sinon on est sur F(floor) ou C(ceiling)*/
-		else
-		{
-			if (fill_color(data, &data->texinfo, map[i], j) == ERR)
-				return (FAILURE);
-			return (BREAK);
-		}	
+		else if (fill_color(data, &data->texinfo, map[i], j) == FAILURE)
+			return (err_msg(data->mapinfo.path, ERR_TEX_INVALID, FAILURE));
+		return (BREAK);
 	}
-	/*sinon on est sur des chiffres, le mur de la map (1)*/
 	else if (ft_isdigit(map[i][j]))
 	{
 		if (create_map(data, map, i) == FAILURE)
