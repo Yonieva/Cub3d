@@ -115,12 +115,10 @@ enum e_texture_index
 	LIB2 = 7,
 	SECRET = 8,
 	WBASE = 9,
-	WBLOOD = 10,
-	WDARK = 11,
-	WPAINT = 12,
-	WRED = 13,
-	TFLOOR = 14,
-	TCEILING = 15
+	WPAINT1 = 10,
+	WPAINT2 = 11,
+	WPAINT3 = 12,
+	WRED = 13
 };
 
 /*********************************************************************/

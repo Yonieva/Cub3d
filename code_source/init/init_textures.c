@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/19 20:05:57 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/20 20:56:42 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,10 @@ void	init_textures(t_data *data)
 		"./textures/bonus/library2.xpm",
 		"./textures/bonus/secret.xpm",
 		"./textures/bonus/wbase.xpm",
-		"./textures/bonus/wblood.xpm",
-		"./textures/bonus/wdark.xpm",
-		"./textures/bonus/wpaint.xpm",
-		"./textures/bonus/wred.xpm",
-		"./textures/bonus/tfloor.xpm",
-		"./textures/bonus/tceiling.xpm"
+		"./textures/bonus/wpaint1.xpm",
+		"./textures/bonus/wpaint2.xpm",
+		"./textures/bonus/wpaint3.xpm",
+		"./textures/bonus/wred.xpm"
 	};
 	int		texture_count = sizeof(texture_paths) / sizeof(texture_paths[0]);
 	data->textures = ft_calloc(texture_count, sizeof *data->textures);
