@@ -55,10 +55,6 @@ typedef unsigned long	t_ulong;
 
 # define DIST_EDGE_MOUSE_WRAP 20
 
-//Floor et ceiling bonus
-#define FLOOR_TEXTURE_INDEX 14
-#define CEILING_TEXTURE_INDEX 15
-
 //minimap
 # define MMAP_PIXEL_SIZE 128
 # define MMAP_VIEW_DIST 4
@@ -138,8 +134,6 @@ typedef struct s_texinfo
 	char			*south;
 	char			*west;
 	char			*east;
-	char			*floor_texture;
-	char			*ceiling_texture;
 	int				*floor;
 	int				*ceiling;
 	unsigned long	hex_floor;

@@ -75,45 +75,23 @@ static int	*set_rgb_colors(char *line)
 }
 
 /*définit les couleurs du sol et du plafond*/
-int	fill_color(t_data *data, t_texinfo *textures, char *line, int j)
+int fill_color(t_data *data, t_texinfo *textures, char *line, int j)
 {
-	if (BONUS)
+	if (!textures->ceiling && line[j] == 'C')
 	{
-		if (!textures->ceiling_texture && line[j] == 'C')
-		{
-			textures->ceiling_texture = get_texture_path(line, j + 1);
-			if (!textures->ceiling_texture)
-				return err_msg(data->mapinfo.path, ERR_TEX_INVALID, FAILURE);
-		}
-		else if (!textures->floor_texture && line[j] == 'F')
-		{
-			textures->floor_texture = get_texture_path(line, j + 1);
-			if (!textures->floor_texture)
-				return err_msg(data->mapinfo.path, ERR_TEX_INVALID, FAILURE);
-		}
-		else
-		{
-			return err_msg(data->mapinfo.path, ERR_TEX_INVALID, FAILURE);
-		}
+		textures->ceiling = set_rgb_colors(line + j + 1);
+		if (!textures->ceiling)
+			return err_msg(data->mapinfo.path, ERR_COLOR_CEILING, FAILURE);
+	}
+	else if (!textures->floor && line[j] == 'F')
+	{
+		textures->floor = set_rgb_colors(line + j + 1);
+		if (!textures->floor)
+			return err_msg(data->mapinfo.path, ERR_COLOR_FLOOR, FAILURE);
 	}
 	else
 	{
-		if (!textures->ceiling && line[j] == 'C')
-		{
-			textures->ceiling = set_rgb_colors(line + j + 1);
-			if (!textures->ceiling)
-				return err_msg(data->mapinfo.path, ERR_COLOR_CEILING, FAILURE);
-		}
-		else if (!textures->floor && line[j] == 'F')
-		{
-			textures->floor = set_rgb_colors(line + j + 1);
-			if (!textures->floor)
-				return err_msg(data->mapinfo.path, ERR_COLOR_FLOOR, FAILURE);
-		}
-		else
-		{
-			return err_msg(data->mapinfo.path, ERR_FLOOR_CEILING, FAILURE);
-		}
+		return err_msg(data->mapinfo.path, ERR_FLOOR_CEILING, FAILURE);
 	}
 	return SUCCESS;
 }

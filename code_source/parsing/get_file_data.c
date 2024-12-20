@@ -44,14 +44,8 @@ char	*get_texture_path(char *line, int j)
 /*associe les textures(north, south, west, east) aux chemins extraits*/
 static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 {
-	// Si c'est une texture pour le sol
-	if (line[j] == 'F' && !(textures->floor_texture))
-		textures->floor_texture = get_texture_path(line, j + 1);
-	// Si c'est une texture pour le plafond
-	else if (line[j] == 'C' && !(textures->ceiling_texture))
-		textures->ceiling_texture = get_texture_path(line, j + 1);
 	// Gestion des directions standard (NO, SO, etc.)
-	else if (line[j] == 'N' && line[j + 1] == 'O' && !(textures->north))
+	if (line[j] == 'N' && line[j + 1] == 'O' && !(textures->north))
 		textures->north = get_texture_path(line, j + 2);
 	else if (line[j] == 'S' && line[j + 1] == 'O' && !(textures->south))
 		textures->south = get_texture_path(line, j + 2);
