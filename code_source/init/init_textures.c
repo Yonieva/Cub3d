@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/18 14:37:18 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/20 20:46:03 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,6 @@ int	*xpm_to_img(t_data *data, char *path)
 	return (buffer);
 }
 
-// void	init_textures(t_data *data)
-// {
-// 	data->textures = ft_calloc(7, sizeof * data->textures);
-// 	if (!data->textures)
-// 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
-// 	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
-// 	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
-// 	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
-// 	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
-// 	if (BONUS)
-// 	{
-// 		data->textures[DOOR] = xpm_to_img(data, "./textures/bonus/door.xpm");
-// 		data->textures[SKULL] = xpm_to_img(data, "./textures/bonus/skull.xpm");
-// 	}
-// 	data->title_img = mlx_xpm_file_to_image(
-// 		data->mlx,
-// 		"./textures/title_screen.xpm",
-// 		&data->win_width,
-// 		&data->win_height);
-// }
-
 static void	load_texture(t_data *data, int index, char *path)
 {
 	data->textures[index] = xpm_to_img(data, path);
@@ -85,9 +64,9 @@ void	init_textures(t_data *data)
 		"./textures/bonus/library2.xpm",
 		"./textures/bonus/secret.xpm",
 		"./textures/bonus/wbase.xpm",
-		"./textures/bonus/wblood.xpm",
-		"./textures/bonus/wdark.xpm",
-		"./textures/bonus/wpaint.xpm",
+		"./textures/bonus/wpaint1.xpm",
+		"./textures/bonus/wpaint2.xpm",
+		"./textures/bonus/wpaint3.xpm",
 		"./textures/bonus/wred.xpm"
 	};
 	int		texture_count = sizeof(texture_paths) / sizeof(texture_paths[0]);

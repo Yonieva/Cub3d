@@ -36,11 +36,11 @@ static void get_texture_index(t_data *data, t_ray *ray)
 	else if (cell == 'B')
 		data->texinfo.index = WBASE;
 	else if (cell == 'H')
-		data->texinfo.index = WBLOOD;
+		data->texinfo.index = WPAINT1;
 	else if (cell == 'O')
-		data->texinfo.index = WDARK;
+		data->texinfo.index = WPAINT2;
 	else if (cell == 'T')
-		data->texinfo.index = WPAINT;
+		data->texinfo.index = WPAINT3;
 	else if (cell == 'R')
 		data->texinfo.index = WRED;
 	if (cell == '1') // Murs standards
