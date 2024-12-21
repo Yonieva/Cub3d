@@ -34,7 +34,7 @@ static void	draw_minimap_tile(t_minimap *minimap, int x, int y)
 {
 	if (x >= minimap->size || y >= minimap->size || x < 0 || y < 0)
 		return;
-	if (ft_strchr("1CKLVBHOTR", minimap->map[y][x]))
+	if (ft_strchr("1CKLVBHOTRI", minimap->map[y][x]))
 		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
 			y * minimap->tile_size, MMAP_COLOR_WALL);
 	else if (minimap->map[y][x] == '0')

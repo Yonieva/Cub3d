@@ -43,6 +43,8 @@ static void get_texture_index(t_data *data, t_ray *ray)
 		data->texinfo.index = WPAINT3;
 	else if (cell == 'R')
 		data->texinfo.index = WRED;
+	else if (cell == 'I')
+		data->texinfo.index = HEAD;
 	if (cell == '1') // Murs standards
 	{
 		if (ray->side == 0)
