@@ -19,29 +19,29 @@ void	draw_title_screen(t_data *data)
 
 static void	print_terminal(void)
 {
-    printf("                          ,--.\n");
-    printf("                         K,   }\n");
-    printf("                        /  `Y`\n");
-    printf("                   _   /   /\n");
-    printf("                  {_'-K.__/\n");
-    printf("                   `/-.__L._\n");
-    printf("                    /  ' /`\\_}\n");
-    printf("                   /  ' /     -CASTLEVANIA 3D-\n");
-    printf("     ,-'~~~~    ~~/  ' /_\n");
-    printf("   ,'             ``~~~%%',\n");
-    printf("  (                        Y\n");
-    printf(" {                      %% I\n");
-    printf("{      -                    `.\n");
-    printf("|       ',                %% )\n");
-    printf("|        |   ,..__      __. Y\n");
-    printf("|    .,_./  Y ' / ^Y   J   )|\n");
-    printf("\\           |' /   |   |   ||\n");
-    printf(" \\          L_/    . _ (_,.'(\n");
-    printf("  \\,   ,      ^^\"\"' / |      )\n");
-    printf("    \\_  \\          /,L]     /\n");
-    printf("      '-_`-,       ` `   ./`\n");
-    printf("         `-(_            )\n");
-    printf("             ^^\\..___,.--`\n");
+	printf("                          ,--.\n");
+	printf("                         K,   }\n");
+	printf("                        /  `Y`\n");
+	printf("                   _   /   /\n");
+	printf("                  {_'-K.__/\n");
+	printf("                   `/-.__L._\n");
+	printf("                    /  ' /`\\_}\n");
+	printf("                   /  ' /     -CASTLEVANIA 3D-\n");
+	printf("     ,-'~~~~    ~~/  ' /_\n");
+	printf("   ,'             ``~~~%%',\n");
+	printf("  (                        Y\n");
+	printf(" {                      %% I\n");
+	printf("{      -                    `.\n");
+	printf("|       ',                %% )\n");
+	printf("|        |   ,..__      __. Y\n");
+	printf("|    .,_./  Y ' / ^Y   J   )|\n");
+	printf("\\           |' /   |   |   ||\n");
+	printf(" \\          L_/    . _ (_,.'(\n");
+	printf("  \\,   ,      ^^\"\"' / |      )\n");
+	printf("    \\_  \\          /,L]     /\n");
+	printf("      '-_`-,       ` `   ./`\n");
+	printf("         `-(_            )\n");
+	printf("             ^^\\..___,.--`\n");
 }
 
 void	print_controls(void)
@@ -61,4 +61,3 @@ void	print_controls(void)
 		printf(YELLOW "\tMouse" RESET ": rotate view\n");
 	printf("\n");
 }
-

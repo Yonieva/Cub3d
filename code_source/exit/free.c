@@ -17,16 +17,16 @@ void	free_tab(void **tab)
 	size_t	i;
 
 	i = 0;
+	if (!tab)
+		return ;
 	while (tab[i])
 	{
 		free(tab[i]);
+		tab[i] = NULL;
 		i++;
 	}
-	if (tab)
-	{
-		free(tab);
-		tab = NULL;
-	}
+	free(tab);
+	tab = NULL;
 }
 
 static void	free_texinfo(t_texinfo *textures)

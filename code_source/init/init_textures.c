@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/28 20:02:22 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/28 20:35:54 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,15 @@ static void	init_xpm(char **texture_paths, t_texinfo *texinfo)
 
 void	textures_data(t_data *data)
 {
-	int		i;
 	int		texture_count;
-	char	*texture_paths[15];
+	char	*texture_paths[14];
 
-	init_texture_paths(texture_paths, &data->texinfo);
+	init_xpm(texture_paths, &data->texinfo);
 	texture_count = sizeof(texture_paths) / sizeof(texture_paths[0]);
 	data->textures = ft_calloc(texture_count, sizeof(*data->textures));
 	if (!data->textures)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, FAILURE));
-	initialize_textures(data, texture_paths, texture_count);
+	init_textures(data, texture_paths, texture_count);
 }
 
 void	init_textures(t_data *data, char **texture_paths, int texture_count)

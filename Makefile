@@ -6,7 +6,7 @@
 #    By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/08 19:56:26 by gaesteve          #+#    #+#              #
-#    Updated: 2024/12/15 21:41:14 by gaesteve         ###   ########.fr        #
+#    Updated: 2024/12/28 20:22:08 by gaesteve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC		= 	main.c \
 			init/init_data.c \
 			init/init_mlx.c \
 			init/init_textures.c \
+			init/init_textures2.c \
 			parsing/check_args.c \
 			parsing/parse_data.c \
 			parsing/get_file_data.c \
