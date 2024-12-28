@@ -14,9 +14,9 @@
 
 void	clean_exit(t_data *data, int code)
 {
-	if(!data)
-		exit(code);
-	if(data->win && data->mlx)
+	if (!data)
+		exit (code);
+	if (data->win && data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
 	{
@@ -25,11 +25,11 @@ void	clean_exit(t_data *data, int code)
 		free(data->mlx);
 	}
 	free_data(data);
-	exit(code);
+	exit (code);
 }
 
 int	quit_cub3d(t_data *data)
 {
 	clean_exit(data, 0);
-	return(0);
+	return (0);
 }

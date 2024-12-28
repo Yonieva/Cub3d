@@ -6,17 +6,18 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 21:08:47 by gaesteve          #+#    #+#             */
-/*   Updated: 2024/12/18 13:20:56 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/28 20:02:38 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void init_door(t_data *data)
+void	init_door(t_data *data)
 {
-	int y = 0;
-	int x;
+	int	y;
+	int	x;
 
+	y = 0;
 	while (data->map[y])
 	{
 		x = 0;
@@ -27,7 +28,7 @@ void init_door(t_data *data)
 				data->door.pos_x = x;
 				data->door.pos_y = y;
 				data->door.is_open = 0;
-				return;
+				return ;
 			}
 			x++;
 		}

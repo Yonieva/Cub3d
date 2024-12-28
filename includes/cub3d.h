@@ -237,17 +237,18 @@ void	print_controls(void);
 void	draw_title_screen(t_data *data);
 void	play_intro_video(t_data *data);
 //*********************************init
-void	init_data(t_data *data);
+void	init_door(t_data *data);
 void	init_img_clean(t_img *img);
 void	init_ray(t_ray *ray);
+void	init_data(t_data *data);
 void	init_mlx(t_data *data);
 void	init_texture_img(t_data *data, t_img *image, char *path);
 void	init_img(t_data *data, t_img *image, int width, int height);
-void	init_texinfo(t_texinfo *textures);
-void	init_textures(t_data *data);
-void	init_door(t_data *data);
-void	init_title_screen(t_data *data);
 int		*xpm_to_img(t_data *data, char *path);
+void	textures_data(t_data *data);
+void	init_textures(t_data *data, char **texture_paths, int texture_count);
+void	init_title_screen(t_data *data);
+void	init_texinfo(t_texinfo *textures);
 //*********************************parsing
 int		parse_args(t_data *data, char **av);
 int		check_file(char *arg, bool cub);
