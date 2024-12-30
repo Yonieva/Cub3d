@@ -207,9 +207,9 @@ typedef struct s_player
 
 typedef struct s_door
 {
-	int pos_x;
-	int pos_y;
-	int is_open;
+	int	pos_x;
+	int	pos_y;
+	int	is_open;
 }	t_door;
 
 typedef struct s_data

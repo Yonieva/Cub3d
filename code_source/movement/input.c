@@ -56,13 +56,12 @@ static int	key_release_handler(int key, t_data *data)
 	return (0);
 }
 
-/*La fonction wrap_mouse_position permet de capturer la position de la souris 
-lorsqu'elle approche des bords de la fenêtre du jeu et de la déplacer instantanément 
-à l'autre bord, créant ainsi un effet de "bouclage" horizontal de la souris.
- Cela permet d'éviter que la souris sorte de la fenêtre du jeu.
-
-Effet de "wrap" : Lorsque la souris touche un bord (gauche ou droit), elle 
-se déplace instantanément vers l'autre bord de l'écran.
+/*La fonction wrap_mouse_position permet de capturer la position de 
+la souris lorsqu'elle approche des bords de la fenêtre du jeu 
+et de la déplacer instantanément à l'autre bord, créant ainsi 
+un effet de "bouclage" horizontal de la souris.
+Effet de "wrap" : Lorsque la souris touche un bord (gauche ou droit), 
+elle se déplace instantanément vers l'autre bord de l'écran.
 Distance de "wrap" : La fonction utilise DIST_EDGE_MOUSE_WRAP pour 
 définir la distance au bord avant de déplacer la souris*/
 static void	wrap_mouse_position(t_data *data, int x, int y)
@@ -101,13 +100,9 @@ static int	mouse_motion_handler(int x, int y, t_data *data)
 
 void	listen_for_input(t_data *data)
 {
-	/*fermeture de la fenetre*/
 	mlx_hook(data->win, ClientMessage, NoEventMask, quit_cub3d, data);
-	/*enregistre un gestionnaire pour l'événement KeyPress*/
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press_handler, data);
-	/*enregistre un gestionnaire pour l'événement KeyRelease*/
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release_handler, data);
-	/*écoute des mouvements de la souris*/
 	if (BONUS)
 		mlx_hook(data->win, MotionNotify, PointerMotionMask,
 			mouse_motion_handler, data);

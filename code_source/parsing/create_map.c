@@ -49,7 +49,7 @@ static int	fill_map_tab(t_mapinfo *mapinfo, char **map_tab, int index)
 		{
 			map_tab[i][j] = mapinfo->file[index][j];
 			j++;
-		}	
+		}
 		while (j < mapinfo->width)
 			map_tab[i][j++] = '\0';
 		i++;

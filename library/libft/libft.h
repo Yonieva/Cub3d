@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:58:11 by yonieva           #+#    #+#             */
-/*   Updated: 2024/11/25 18:52:31 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/12/30 21:41:32 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*get_next_line(int fd);
 char	*ft_line_results(int ret, char *stock, char *buffer);
 void	ft_get_the_spare(char *buffer);
 char	*ft_get_the_line(char *stock);
-int     ft_malloc_count(char *stock);
+int		ft_malloc_count(char *stock);
 char	*f_strjoin(char *s1, char *s2);
 char	*f_strdup(char *s1);
 char	*f_strchr(char *s, int c);

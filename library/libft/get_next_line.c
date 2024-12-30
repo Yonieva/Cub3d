@@ -104,4 +104,3 @@ char	*get_next_line(int fd)
 	}
 	return (ft_line_results(ret, stock, buffer));
 }
-

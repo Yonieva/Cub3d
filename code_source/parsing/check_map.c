@@ -24,9 +24,7 @@ static int	check_map_elements(t_data *data, char **map_tab)
 		j = 0;
 		while (map_tab[i][j])
 		{
-			while (data->map[i][j] == ' ' || data->map[i][j] == '\t'
-			|| data->map[i][j] == '\r'
-			|| data->map[i][j] == '\v' || data->map[i][j] == '\f')
+			while (map_tab[i][j] >= 9 && map_tab[i][j] <= 13)
 				j++;
 			if (!BONUS && !(ft_strchr("10NSEW", map_tab[i][j])))
 				return (err_msg(data->mapinfo.path, ERR_INV_LETTER, FAILURE));
@@ -114,13 +112,13 @@ static int	check_map_is_at_the_end(t_mapinfo *map)
 	return (SUCCESS);
 }
 
+/*check si au moins 3 ligne sur la map*/
 int	check_map_validity(t_data *data, char **map_tab)
 {
 	if (!data->map)
 		return (err_msg(data->mapinfo.path, ERR_MAP_MISSING, FAILURE));
 	if (check_map_sides(&data->mapinfo, map_tab) == FAILURE)
 		return (err_msg(data->mapinfo.path, ERR_MAP_NO_WALLS, FAILURE));
-	/*check si au moins 3 ligne sur la map*/
 	if (data->mapinfo.height < 3)
 		return (err_msg(data->mapinfo.path, ERR_MAP_TOO_SMALL, FAILURE));
 	if (check_map_elements(data, map_tab) == FAILURE)

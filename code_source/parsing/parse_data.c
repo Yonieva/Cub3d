@@ -63,6 +63,7 @@ static void	fill_tab(int row, int column, int i, t_data *data)
 }
 
 /*Analyse et copie fichier cub dans la structure data*/
+/*errno =  var globale en C. code d'erreur spécifique à l'échec de open.*/
 void	parse_data(char *path, t_data *data)
 {
 	int		row;
@@ -82,7 +83,6 @@ void	parse_data(char *path, t_data *data)
 		return ;
 	}
 	data->mapinfo.fd = open(path, O_RDONLY);
-	/*errno =  var globale en C. code d'erreur spécifique à l'échec de open.*/
 	if (data->mapinfo.fd < 0)
 		err_msg(path, strerror(errno), FAILURE);
 	else

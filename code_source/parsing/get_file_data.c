@@ -44,7 +44,6 @@ char	*get_texture_path(char *line, int j)
 /*associe les textures(north, south, west, east) aux chemins extraits*/
 static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 {
-	// Gestion des directions standard (NO, SO, etc.)
 	if (line[j] == 'N' && line[j + 1] == 'O' && !(textures->north))
 		textures->north = get_texture_path(line, j + 2);
 	else if (line[j] == 'S' && line[j + 1] == 'O' && !(textures->south))
