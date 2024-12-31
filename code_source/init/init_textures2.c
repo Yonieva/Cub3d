@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 20:01:37 by gaesteve          #+#    #+#             */
-/*   Updated: 2024/12/28 20:02:29 by gaesteve         ###   ########.fr       */
+/*   Updated: 2024/12/31 19:30:34 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,11 @@ void	init_texinfo(t_texinfo *textures)
 	textures->pos = 0.0;
 	textures->x = 0;
 	textures->y = 0;
+}
+
+int	get_texture_count(void)
+{
+	if (BONUS)
+		return (15);
+	return (4);
 }

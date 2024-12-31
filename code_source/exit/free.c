@@ -26,7 +26,6 @@ void	free_tab(void **tab)
 		i++;
 	}
 	free(tab);
-	tab = NULL;
 }
 
 static void	free_texinfo(t_texinfo *textures)
@@ -58,9 +57,15 @@ static void	free_map(t_data *data)
 int	free_data(t_data *data)
 {
 	if (data->textures)
+	{
 		free_tab((void **)data->textures);
+		data->textures = NULL;
+	}
 	if (data->texture_pixels)
+	{
 		free_tab((void **)data->texture_pixels);
+		data->texture_pixels = NULL;
+	}
 	free_texinfo(&data->texinfo);
 	free_map(data);
 	return (FAILURE);

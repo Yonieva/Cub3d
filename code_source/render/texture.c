@@ -12,17 +12,8 @@
 
 #include "cub3d.h"
 
-/*Si le mur frappé est horizontal (ray->side == 0) :
-Si le rayon se dirige vers la gauche (ray->dir_x < 0), la texture de l'OUEST (WEST) est utilisée.
-Si le rayon se dirige vers la droite (ray->dir_x >= 0), la texture de l'EST (EAST) est utilisée.
-
-Si le mur frappé est vertical (ray->side == 1) :
-Si le rayon se dirige vers le bas (ray->dir_y > 0), la texture du SUD (SOUTH) est utilisée.
-Si le rayon se dirige vers le haut (ray->dir_y <= 0), la texture du NORD (NORTH) est utilisée*/
-static void get_texture_index(t_data *data, t_ray *ray)
+static void	assign_texture_index(t_data *data, char cell)
 {
-	char	cell = data->map[ray->map_y][ray->map_x];
-
 	if (cell == 'D')
 		data->texinfo.index = DOOR;
 	else if (cell == 'C')
@@ -45,31 +36,39 @@ static void get_texture_index(t_data *data, t_ray *ray)
 		data->texinfo.index = WRED;
 	else if (cell == 'I')
 		data->texinfo.index = HEAD;
-	if (cell == '1') // Murs standards
+}
+
+static void	assign_wall_texture(t_data *data, t_ray *ray)
+{
+	if (ray->side == 0)
 	{
-		if (ray->side == 0)
-		{
-			if (ray->dir_x < 0)
-				data->texinfo.index = WEST;
-			else
-				data->texinfo.index = EAST;
-		}
+		if (ray->dir_x < 0)
+			data->texinfo.index = WEST;
 		else
-		{
-			if (ray->dir_y > 0)
-				data->texinfo.index = SOUTH;
-			else
-				data->texinfo.index = NORTH;
-		}
+			data->texinfo.index = EAST;
+	}
+	else
+	{
+		if (ray->dir_y > 0)
+			data->texinfo.index = SOUTH;
+		else
+			data->texinfo.index = NORTH;
 	}
 }
 
+static void	get_texture_index(t_data *data, t_ray *ray)
+{
+	char	cell;
+
+	cell = data->map[ray->map_y][ray->map_x];
+	assign_texture_index(data, cell);
+	if (cell == '1')
+		assign_wall_texture(data, ray);
+}
+
 /*Cette fonction applique la texture sélectionnée sur une colonne de l'écran
-en calculant quel pixel de la texture correspond à chaque ligne de pixels entre draw_start et draw_end.
-t_data *data : Données du jeu, incluant la liste des textures et des pixels à afficher.
-t_texinfo *tex : Contient les informations sur la texture (dimensions, index, position actuelle).
-t_ray *ray : Contient les informations sur le rayon (hauteur de ligne, position sur le mur).
-int x : Position horizontale actuelle sur l'écran.*/
+en calculant quel pixel de la texture correspond à chaque ligne de pixels
+entre draw_start et draw_end.*/
 void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x)
 {
 	int			y;
@@ -102,9 +101,9 @@ pour stocker les infos des pixels des textures
 pour reagir au changement de dimensions de la fenetre*/
 void	init_texture_pixels(t_data *data)
 {
-	int i;
+	int	i;
 
-	if (data->texture_pixels) // S'assurer qu'il n'y a pas déjà des données
+	if (data->texture_pixels)
 		free_tab((void **)data->texture_pixels);
 	data->texture_pixels = ft_calloc(data->win_height + 1, sizeof(int *));
 	if (!data->texture_pixels)
@@ -119,8 +118,3 @@ void	init_texture_pixels(t_data *data)
 	}
 	data->texture_pixels[i] = NULL;
 }
-
-
-
-
-

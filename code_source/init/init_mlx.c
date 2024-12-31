@@ -34,6 +34,11 @@ void	init_texture_img(t_data *data, t_img *image, char *path)
 		clean_exit(data, err_msg("mlx", ERR_MLX_IMG, 1));
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,
 			&image->size_line, &image->endian);
+	if (!image->addr)
+	{
+		mlx_destroy_image(data->mlx, image->img);
+		clean_exit(data, err_msg("Failed to get data address", ERR_MLX_IMG, 1));
+	}
 	return ;
 }
 

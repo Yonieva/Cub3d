@@ -6,7 +6,7 @@
 #    By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/08 19:56:26 by gaesteve          #+#    #+#              #
-#    Updated: 2024/12/28 20:22:08 by gaesteve         ###   ########.fr        #
+#    Updated: 2024/12/31 19:24:46 by gaesteve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC		= 	main.c \
 			parsing/fill_color.c \
 			parsing/utils.c \
 			render/render.c \
+			render/render2.c \
 			render/texture.c \
 			render/raycasting.c \
 			render/minimap_render.c \

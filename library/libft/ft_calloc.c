@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:05:46 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/09 03:01:11 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/12/31 18:36:18 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

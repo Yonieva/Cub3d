@@ -248,7 +248,9 @@ int		*xpm_to_img(t_data *data, char *path);
 void	textures_data(t_data *data);
 void	init_textures(t_data *data, char **texture_paths, int texture_count);
 void	init_title_screen(t_data *data);
+void	free_title_screen(t_data *data);
 void	init_texinfo(t_texinfo *textures);
+int		get_texture_count(void);
 //*********************************parsing
 int		parse_args(t_data *data, char **av);
 int		check_file(char *arg, bool cub);
@@ -275,6 +277,7 @@ int		render(t_data *data);
 void	set_image_pixel(t_img *image, int x, int y, int color);
 void	init_texture_pixels(t_data *data);
 void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x);
+void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y);
 int		raycasting(t_player *player, t_data *data);
 void	render_minimap(t_data *data);
 void	render_minimap_image(t_data *data, t_minimap *minimap);

@@ -33,7 +33,7 @@ static void	set_minimap_tile_pixels(t_minimap *minimap, int x, int y, int color)
 static void	draw_minimap_tile(t_minimap *minimap, int x, int y)
 {
 	if (x >= minimap->size || y >= minimap->size || x < 0 || y < 0)
-		return;
+		return ;
 	if (ft_strchr("1CKLVBHOTRI", minimap->map[y][x]))
 		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
 			y * minimap->tile_size, MMAP_COLOR_WALL);
@@ -47,7 +47,6 @@ static void	draw_minimap_tile(t_minimap *minimap, int x, int y)
 		set_minimap_tile_pixels(minimap, x * minimap->tile_size,
 			y * minimap->tile_size, MMAP_COLOR_SPACE);
 }
-
 
 static void	set_minimap_border_image_pixels(t_minimap *minimap, int color)
 {

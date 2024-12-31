@@ -12,32 +12,9 @@
 
 #include "cub3d.h"
 
-/*permet de définir la couleur d'un pixel à une position (x, y) dans une image (représentée par la structure t_img),
-en utilisant un tableau de pixels.*/
-void	set_image_pixel(t_img *image, int x, int y, int color)
-{
-	int	pixel;
-	/*chaque pixel est représenté par 4 octets (pour le format RGBA)*/
-	pixel = y * (image->size_line / 4) + x;
-	image->addr[pixel] = color;
-}
-
-/*Cette fonction est responsable de la détermination du pixel à afficher sur l'écran pour une position donnée (x, y).
-Elle choisit entre les différentes textures, couleurs de plafond ou de sol, ou encore de l'espace vide,
-en fonction des données de texture et de l'élévation (position y) du pixel*/
-static void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y)
-{
-	if (data->texture_pixels[y][x] > 0)
-		set_image_pixel(image, x, y, data->texture_pixels[y][x]);
-	else if (y < data->win_height / 2)
-		set_image_pixel(image, x, y, data->texinfo.hex_ceiling);
-	else if (y < data->win_height -1)
-		set_image_pixel(image, x, y, data->texinfo.hex_floor);
-}
-
-/*La fonction render_frame est responsable de la création de l'image complète à afficher à l'écran.
-Elle parcourt tous les pixels de l'image et utilise set_frame_image_pixel pour remplir chaque pixel
-avec les bonnes données (textures, couleurs de plafond ou de sol).*/
+/*La fonction render_frame est responsable de la création de l'image complète
+à afficher à l'écran. Elle parcourt tous les pixels de l'image et utilise
+set_frame_image_pixel pour remplir chaque pixel avec les bonnes données.*/
 static void	render_frame(t_data *data)
 {
 	t_img	image;
@@ -46,10 +23,8 @@ static void	render_frame(t_data *data)
 
 	image.img = NULL;
 	init_img(data, &image, data->win_width, data->win_height);
-	init_texture_pixels(data); // essayer d enlever ca apres
+	init_texture_pixels(data);
 	raycasting(&data->player, data);
-
-	// Dessiner les pixels dans l'image
 	y = 0;
 	while (y < data->win_height)
 	{
@@ -61,7 +36,6 @@ static void	render_frame(t_data *data)
 		}
 		y++;
 	}
-	// Afficher l'image finale
 	mlx_put_image_to_window(data->mlx, data->win, image.img, 0, 0);
 	mlx_destroy_image(data->mlx, image.img);
 }
@@ -76,9 +50,9 @@ static void	render_raycast(t_data *data)
 
 void	render_images(t_data *data)
 {
-	if(!data->start_game)
+	if (!data->start_game)
 		draw_title_screen(data);
-	else if(data->start_game == 1 && BONUS)
+	else if (data->start_game == 1 && BONUS)
 		play_intro_video(data);
 	else
 	{
