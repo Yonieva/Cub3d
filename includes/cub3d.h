@@ -50,8 +50,8 @@ typedef unsigned long	t_ulong;
 #  define BONUS 1
 # endif
 
-# define MOVESPEED 0.0325
-# define ROTSPEED 0.015
+# define MOVESPEED 0.0550
+# define ROTSPEED 0.0400
 
 # define DIST_EDGE_MOUSE_WRAP 20
 
