@@ -6,7 +6,7 @@
 /*   By: gaesteve <gaesteve@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/12/31 19:32:40 by gaesteve         ###   ########.fr       */
+/*   Updated: 2025/01/03 01:06:47 by gaesteve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,6 @@ int	*xpm_to_img(t_data *data, char *path)
 	return (buffer);
 }
 
-static void	load_texture(t_data *data, int index, char *path)
-{
-	if (path)
-	{
-		data->textures[index] = xpm_to_img(data, path);
-		if (!data->textures[index])
-			clean_exit(data, err_msg(path, ERR_TEX_INVALID, FAILURE));
-	}
-	else
-		data->textures[index] = NULL;
-}
-
 static void	init_xpm(char **texture_paths, t_texinfo *texinfo)
 {
 	texture_paths[0] = texinfo->north;
@@ -75,6 +63,32 @@ static void	init_xpm(char **texture_paths, t_texinfo *texinfo)
 	}
 }
 
+//Conversion de tous les xpm en un tableau de pixel
+static void	load_texture(t_data *data, int index, char *path)
+{
+	if (path)
+	{
+		data->textures[index] = xpm_to_img(data, path);
+		if (!data->textures[index])
+			clean_exit(data, err_msg(path, ERR_TEX_INVALID, FAILURE));
+	}
+	else
+		data->textures[index] = NULL;
+}
+
+//Charge toutes les textures nécessaires
+void	init_textures(t_data *data, char **texture_paths, int texture_count)
+{
+	int	i;
+
+	i = 0;
+	while (i < texture_count)
+	{
+		load_texture(data, i, texture_paths[i]);
+		i++;
+	}
+}
+
 void	textures_data(t_data *data)
 {
 	int		texture_count;
@@ -86,16 +100,4 @@ void	textures_data(t_data *data)
 	if (!data->textures)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, FAILURE));
 	init_textures(data, texture_paths, texture_count);
-}
-
-void	init_textures(t_data *data, char **texture_paths, int texture_count)
-{
-	int	i;
-
-	i = 0;
-	while (i < texture_count)
-	{
-		load_texture(data, i, texture_paths[i]);
-		i++;
-	}
 }
